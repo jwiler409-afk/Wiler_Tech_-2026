@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wiler_Tech — Portfolio Développeur</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-dark:#0D1B2A;
+    --bg-light:#1A2F42;
+    --card-bg:#112240;
+    --sky:#1BA3D8;
+    --sky-light:#2EBCE8;
+    --cream:#F5F1E6;
+    --gray:#8B96A8;
+    --gray-dark:#5E6B7A;
+    --line:#2D3E50;
+  }
+  
+  *{box-sizing:border-box; margin:0; padding:0;}
+  
+  html{scroll-behavior:smooth;}
+  
+  body{
+    background:linear-gradient(180deg, var(--bg-dark), var(--bg-light));
+    font-family:'Space Grotesk', sans-serif;
+    color:var(--cream);
+    line-height:1.6;
+    min-height:100vh;
+  }
+  
+  /* ─────── HEADER ─────── */
+  header{
+    border-bottom:1px solid var(--line);
+    padding:20px 0;
+    position:sticky;
+    top:0;
+    background:rgba(13,27,42,0.92);
+    backdrop-filter:blur(10px);
+    z-index:100;
+  }
+  
+  nav{
+    max-width:900px;
+    margin:0 auto;
+    padding:0 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+  
+  .logo{
+    font-size:20px;
+    font-weight:700;
+    letter-spacing:0.04em;
+    color:var(--cream);
+  }
+  
+  .logo span{color:var(--sky);}
+  
+  nav ul{
+    list-style:none;
+    display:flex;
+    gap:24px;
+  }
+  
+  nav a{
+    color:var(--gray);
+    text-decoration:none;
+    font-size:13px;
+    font-weight:500;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    transition:color 0.3s;
+  }
+  
+  nav a:hover{color:var(--sky);}
+  
+  /* ─────── HERO ─────── */
+  .hero{
+    max-width:900px;
+    margin:0 auto;
+    padding:80px 20px;
+    text-align:center;
+  }
+  
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.15em;
+    text-transform:uppercase;
+    color:var(--sky);
+    margin-bottom:16px;
+    display:inline-block;
+    padding:6px 12px;
+    border:1px solid var(--line);
+    border-radius:999px;
+  }
+  
+  h1{
+    font-size:48px;
+    font-weight:700;
+    margin:16px 0;
+    letter-spacing:-0.02em;
+    line-height:1.2;
+  }
+  
+  h1 span{color:var(--sky);}
+  
+  .tagline{
+    font-size:18px;
+    color:var(--gray);
+    margin-bottom:32px;
+    max-width:600px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  
+  .cta-group{
+    display:flex;
+    gap:16px;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+  
+  .btn{
+    padding:12px 28px;
+    border-radius:8px;
+    font-weight:600;
+    font-size:13px;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    text-decoration:none;
+    border:1px solid transparent;
+    cursor:pointer;
+    transition:all 0.3s;
+    font-family:'Space Grotesk', sans-serif;
+  }
+  
+  .btn-primary{
+    background:var(--sky);
+    color:var(--bg-dark);
+  }
+  
+  .btn-primary:hover{
+    background:var(--sky-light);
+    transform:translateY(-2px);
+  }
+  
+  .btn-secondary{
+    border:1px solid var(--sky);
+    color:var(--sky);
+    background:transparent;
+  }
+  
+  .btn-secondary:hover{
+    background:rgba(27,163,216,0.1);
+  }
+  
+  /* ─────── SECTION ─────── */
+  section{
+    max-width:900px;
+    margin:0 auto;
+    padding:60px 20px;
+    border-top:1px dashed var(--line);
+  }
+  
+  section h2{
+    font-size:32px;
+    margin-bottom:40px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+  
+  section h2::before{
+    content:"";
+    width:4px;
+    height:24px;
+    background:var(--sky);
+    border-radius:2px;
+  }
+  
+  /* ─────── PROJETS ─────── */
+  .projects-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
+    gap:24px;
+  }
+  
+  .project-card{
+    background:var(--card-bg);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:28px;
+    display:flex;
+    flex-direction:column;
+    transition:all 0.3s;
+    position:relative;
+    overflow:hidden;
+  }
+  
+  .project-card::before{
+    content:"";
+    position:absolute;
+    top:-50px;
+    right:-50px;
+    width:150px;
+    height:150px;
+    background:radial-gradient(circle, rgba(27,163,216,0.15), transparent);
+    border-radius:50%;
+    pointer-events:none;
+  }
+  
+  .project-card:hover{
+    border-color:var(--sky);
+    transform:translateY(-8px);
+  }
+  
+  .project-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:start;
+    margin-bottom:16px;
+    position:relative;
+    z-index:1;
+  }
+  
+  .project-card h3{
+    font-size:20px;
+    margin:0;
+  }
+  
+  .project-badge{
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    padding:4px 10px;
+    border-radius:999px;
+    background:rgba(27,163,216,0.15);
+    color:var(--sky);
+    font-weight:600;
+    white-space:nowrap;
+  }
+  
+  .project-badge.premier{
+    background:rgba(27,163,216,0.25);
+  }
+  
+  .project-desc{
+    color:var(--gray);
+    font-size:14px;
+    margin-bottom:20px;
+    position:relative;
+    z-index:1;
+  }
+  
+  .project-tech{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:auto;
+    position:relative;
+    z-index:1;
+  }
+  
+  .tech-tag{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    padding:4px 10px;
+    border:1px solid var(--line);
+    border-radius:4px;
+    color:var(--sky);
+    background:rgba(27,163,216,0.06);
+  }
+  
+  .voir-plus-btn{
+    text-align:center;
+    padding:40px 20px;
+  }
+  
+  .btn-voir-plus{
+    padding:14px 36px;
+    font-size:14px;
+    border:2px solid var(--sky);
+    background:transparent;
+    color:var(--sky);
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:600;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    font-family:'Space Grotesk', sans-serif;
+    transition:all 0.3s;
+  }
+  
+  .btn-voir-plus:hover{
+    background:rgba(27,163,216,0.1);
+    transform:translateY(-2px);
+  }
+  
+  .hidden-projects{
+    display:none;
+  }
+  
+  .hidden-projects.active{
+    display:grid;
+  }
+  
+  /* ─────── MODAL ─────── */
+  .modal{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background:rgba(0,0,0,0.8);
+    backdrop-filter:blur(5px);
+    z-index:1000;
+    align-items:center;
+    justify-content:center;
+  }
+  
+  .modal.active{
+    display:flex;
+  }
+  
+  .modal-content{
+    background:var(--card-bg);
+    border:1px solid var(--sky);
+    border-radius:12px;
+    padding:40px;
+    max-width:400px;
+    width:90%;
+    text-align:center;
+    animation:slideIn 0.3s;
+  }
+  
+  @keyframes slideIn{
+    from{
+      opacity:0;
+      transform:translateY(-20px);
+    }
+    to{
+      opacity:1;
+      transform:translateY(0);
+    }
+  }
+  
+  .modal h3{
+    font-size:24px;
+    margin-bottom:16px;
+    color:var(--sky);
+  }
+  
+  .modal p{
+    color:var(--gray);
+    margin-bottom:24px;
+    font-size:14px;
+  }
+  
+  .modal input{
+    width:100%;
+    padding:12px;
+    border:1px solid var(--line);
+    background:rgba(0,0,0,0.2);
+    color:var(--cream);
+    border-radius:6px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:14px;
+    letter-spacing:0.1em;
+    margin-bottom:16px;
+    text-align:center;
+  }
+  
+  .modal input::placeholder{
+    color:var(--gray-dark);
+  }
+  
+  .modal input:focus{
+    outline:none;
+    border-color:var(--sky);
+    box-shadow:0 0 0 2px rgba(27,163,216,0.2);
+  }
+  
+  .modal-buttons{
+    display:flex;
+    gap:12px;
+  }
+  
+  .modal-btn{
+    flex:1;
+    padding:12px;
+    border:none;
+    border-radius:6px;
+    font-weight:600;
+    font-size:13px;
+    text-transform:uppercase;
+    cursor:pointer;
+    font-family:'Space Grotesk', sans-serif;
+    transition:all 0.3s;
+  }
+  
+  .modal-btn.confirm{
+    background:var(--sky);
+    color:var(--bg-dark);
+  }
+  
+  .modal-btn.confirm:hover{
+    background:var(--sky-light);
+  }
+  
+  .modal-btn.cancel{
+    background:rgba(27,163,216,0.1);
+    color:var(--sky);
+  }
+  
+  .modal-btn.cancel:hover{
+    background:rgba(27,163,216,0.2);
+  }
+  
+  .error-msg{
+    color:#FF6B6B;
+    font-size:12px;
+    margin-top:-12px;
+    margin-bottom:12px;
+    display:none;
+  }
+  
+  /* ─────── À PROPOS ─────── */
+  .about-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+    gap:32px;
+  }
+  
+  .about-card{
+    background:var(--card-bg);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:28px;
+  }
+  
+  .about-card h3{
+    font-size:16px;
+    color:var(--sky);
+    margin-bottom:12px;
+    font-weight:600;
+  }
+  
+  .about-card p{
+    font-size:14px;
+    color:var(--gray);
+    line-height:1.8;
+  }
+  
+  /* ─────── CONTACT ─────── */
+  .contact-container{
+    background:linear-gradient(135deg, rgba(27,163,216,0.1), rgba(139,150,168,0.05));
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:40px;
+    text-align:center;
+  }
+  
+  .contact-container h3{
+    font-size:24px;
+    margin-bottom:24px;
+  }
+  
+  .contact-info{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    margin-bottom:32px;
+  }
+  
+  .contact-line{
+    font-family:'JetBrains Mono', monospace;
+    font-size:14px;
+  }
+  
+  .contact-line span:first-child{
+    color:var(--gray);
+    margin-right:16px;
+  }
+  
+  .contact-line span:last-child{
+    color:var(--sky);
+    font-weight:600;
+  }
+  
+  /* ─────── FOOTER ─────── */
+  footer{
+    text-align:center;
+    padding:40px 20px;
+    border-top:1px dashed var(--line);
+    color:var(--gray-dark);
+    font-size:12px;
+  }
+  
+  /* ─────── RESPONSIVE ─────── */
+  @media(max-width:640px){
+    h1{font-size:32px;}
+    .tagline{font-size:16px;}
+    nav ul{gap:12px;}
+    nav a{font-size:11px;}
+    section{padding:40px 20px;}
+    section h2{font-size:24px;}
+    .projects-grid{grid-template-columns:1fr;}
+    .modal-content{padding:32px 24px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">Wiler<span>_Tech</span></div>
+    <ul>
+      <li><a href="#projets">Projets</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="eyebrow">Développeur Indépendant</div>
+  <h1>Wiler <span>_Tech</span></h1>
+  <p class="tagline">Web · Android · Applications Desktop — Applications réelles livrées à des clients en Haïti et à l'international</p>
+  <div class="cta-group">
+    <a href="#projets" class="btn btn-primary">Voir mes projets</a>
+    <a href="#contact" class="btn btn-secondary">Entrer en contact</a>
+  </div>
+</div>
+
+<!-- À PROPOS -->
+<section id="about">
+  <h2>À propos</h2>
+  <div class="about-grid">
+    <div class="about-card">
+      <h3>Qui je suis</h3>
+      <p>Développeur autodidacte de 21 ans basé à Port-de-Paix, Haïti. Je construis des applications web, mobiles et desktop depuis 0 — du design à la livraison. J'aime résoudre des problèmes réels avec du code propre et efficace.</p>
+    </div>
+    <div class="about-card">
+      <h3>Approche</h3>
+      <p>Je privilégie les applications légères, autonomes et performantes. Chaque projet que je développe est pensé pour l'utilisateur final. Je maîtrise Firebase, JavaScript pur, et les architectures sans dépendances inutiles.</p>
+    </div>
+    <div class="about-card">
+      <h3>Clients</h3>
+      <p>J'ai livré des solutions à des institutions financières (Société Financière de Crédit Lapointe), à des startups, et à des entrepreneurs individuels. Chaque projet est une relation de confiance bâtie sur la qualité.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROJETS -->
+<section id="projets">
+  <h2>Projets</h2>
+  <div class="projects-grid" id="visibleProjects">
+    
+    <!-- WIL STORE -->
+    <div class="project-card">
+      <div class="project-header">
+        <h3>Wil Store</h3>
+        <span class="project-badge premier">★ Premier & Plus Grand</span>
+      </div>
+      <p class="project-desc">Plateforme e-commerce complète en Haitian Creole. Gestion de marchands, produits, images compressées, panier, commandes avec notifications en temps réel. Architecture Firebase scalable.</p>
+      <div class="project-tech">
+        <span class="tech-tag">HTML/CSS/JS</span>
+        <span class="tech-tag">Firebase</span>
+        <span class="tech-tag">E-commerce</span>
+        <span class="tech-tag">Créole</span>
+      </div>
+    </div>
+    
+    <!-- AYIPAY -->
+    <div class="project-card">
+      <div class="project-header">
+        <h3>AyiPay</h3>
+        <span class="project-badge">En ligne</span>
+      </div>
+      <p class="project-desc">Plateforme de paiement numérique haïtienne. Rôles client/marchand/admin, validation de cartes, historique de transactions, résumés hebdomadaires, notification en temps réel. Déployée Android et web.</p>
+      <div class="project-tech">
+        <span class="tech-tag">Android/Kotlin</span>
+        <span class="tech-tag">Firebase</span>
+        <span class="tech-tag">Paiements</span>
+        <span class="tech-tag">APK</span>
+      </div>
+    </div>
+    
+    <!-- WING -->
+    <div class="project-card">
+      <div class="project-header">
+        <h3>Wing</h3>
+        <span class="project-badge">Beta</span>
+      </div>
+      <p class="project-desc">Marché d'APK billingue (Créole/Français) avec téléchargements, système de paiement intégré AyiPay, verrouillage des méthodes par utilisateur, compression vidéo côté client, mode sombre.</p>
+      <div class="project-tech">
+        <span class="tech-tag">Web</span>
+        <span class="tech-tag">Firebase</span>
+        <span class="tech-tag">Dark Mode</span>
+        <span class="tech-tag">Multilingue</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- HIDDEN PROJECTS -->
+  <div class="projects-grid hidden-projects" id="hiddenProjects">
+    
+    <!-- SOFICLA -->
+    <div class="project-card">
+      <div class="project-header">
+        <h3>SOFICLA</h3>
+        <span class="project-badge">Livrée</span>
+      </div>
+      <p class="project-desc">Application microfinance desktop pour Société Financière de Crédit Lapointe. Gestion de comptes, taux d'intérêt automatisés, backups AES-256, deux rôles (Admin/Caissier), signatures numériques. Exécutable Windows.</p>
+      <div class="project-tech">
+        <span class="tech-tag">Electron</span>
+        <span class="tech-tag">Windows .exe</span>
+        <span class="tech-tag">localStorage</span>
+        <span class="tech-tag">Chiffrement</span>
+      </div>
+    </div>
+
+    <!-- VWALO -->
+    <div class="project-card">
+      <div class="project-header">
+        <h3>Vwalo</h3>
+        <span class="project-badge">Archive</span>
+      </div>
+      <p class="project-desc">Application familiale en Créole pour messaging et appels. Chat en temps réel, WebRTC voice calls, read receipts, PWA installable, optimisation Firebase. Fondations posées pour projets futurs.</p>
+      <div class="project-tech">
+        <span class="tech-tag">PWA</span>
+        <span class="tech-tag">WebRTC</span>
+        <span class="tech-tag">Firebase RT DB</span>
+        <span class="tech-tag">Créole</span>
+      </div>
+    </div>
+
+    <!-- MUTEB -->
+    <div class="project-card">
+      <div class="project-header">
+        <h3>MUTEB</h3>
+        <span class="project-badge">Livrée</span>
+      </div>
+      <p class="project-desc">Système de gestion des économies pour école. Gestion de carnets, calcul de parts, export PDF/Excel, historique des transactions, email avec justificatifs, layout responsive.</p>
+      <div class="project-tech">
+        <span class="tech-tag">PDF/Excel</span>
+        <span class="tech-tag">Gestion</span>
+        <span class="tech-tag">Responsive</span>
+        <span class="tech-tag">Email</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- VOIR PLUS BUTTON -->
+  <div class="voir-plus-btn">
+    <button class="btn-voir-plus" onclick="openCodeModal()">Voir plus de projets</button>
+  </div>
+</section>
+
+<!-- MODAL CODE -->
+<div class="modal" id="codeModal">
+  <div class="modal-content">
+    <h3>Accès restreint</h3>
+    <p>Entrez le code d'accès pour voir les autres projets</p>
+    <div class="error-msg" id="errorMsg">Code incorrect. Veuillez réessayer.</div>
+    <input type="password" id="codeInput" placeholder="Code à 6 caractères" maxlength="6">
+    <div class="modal-buttons">
+      <button class="modal-btn confirm" onclick="verifyCode()">Confirmer</button>
+      <button class="modal-btn cancel" onclick="closeCodeModal()">Annuler</button>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <h2>Entrer en contact</h2>
+  <div class="contact-container">
+    <h3>Prêt à collaborer ?</h3>
+    <div class="contact-info">
+      <div class="contact-line">
+        <span>Téléphone</span>
+        <span>+509 43807545 / +509 40097947 / +509 36253817</span>
+      </div>
+      <div class="contact-line">
+        <span>Localisation</span>
+        <span>Port-de-Paix, Haïti</span>
+      </div>
+      <div class="contact-line">
+        <span>Spécialité</span>
+        <span>Applications autonomes, Firebase, solutions custom</span>
+      </div>
+    </div>
+    <p style="color:var(--gray); font-size:13px;">Je suis disponible pour des projets court/long terme, du consulting technique, ou des collaborations avec d'autres développeurs.</p>
+  </div>
+</section>
+
+<footer>
+  <p>Wiler_Tech © 2026 · Développeur autodidacte · Port-de-Paix, Haiti 🇭🇹</p>
+</footer>
+
+<script>
+  const ACCESS_CODE = '1a2b3c';
+  
+  function openCodeModal(){
+    document.getElementById('codeModal').classList.add('active');
+    document.getElementById('codeInput').focus();
+    document.getElementById('errorMsg').style.display = 'none';
+  }
+  
+  function closeCodeModal(){
+    document.getElementById('codeModal').classList.remove('active');
+    document.getElementById('codeInput').value = '';
+    document.getElementById('errorMsg').style.display = 'none';
+  }
+  
+  function verifyCode(){
+    const code = document.getElementById('codeInput').value;
+    if(code === ACCESS_CODE){
+      document.getElementById('hiddenProjects').classList.add('active');
+      closeCodeModal();
+      document.querySelector('.voir-plus-btn').style.display = 'none';
+    } else {
+      document.getElementById('errorMsg').style.display = 'block';
+      document.getElementById('codeInput').value = '';
+      document.getElementById('codeInput').focus();
+    }
+  }
+  
+  document.getElementById('codeInput').addEventListener('keypress', function(e){
+    if(e.key === 'Enter'){
+      verifyCode();
+    }
+  });
+  
+  document.getElementById('codeModal').addEventListener('click', function(e){
+    if(e.target === this){
+      closeCodeModal();
+    }
+  });
+</script>
+
+</body>
+</html>
