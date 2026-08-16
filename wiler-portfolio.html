@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wiler_Tech — Portfolio Développeur</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-dark:#0D1B2A;
+    --bg-light:#1A2F42;
+    --card-bg:#112240;
+    --sky:#1BA3D8;
+    --sky-light:#2EBCE8;
+    --cream:#F5F1E6;
+    --gray:#8B96A8;
+    --gray-dark:#5E6B7A;
+    --line:#2D3E50;
+  }
+  
+  *{box-sizing:border-box; margin:0; padding:0;}
+  
+  html{scroll-behavior:smooth;}
+  
+  body{
+    background:linear-gradient(180deg, var(--bg-dark), var(--bg-light));
+    font-family:'Space Grotesk', sans-serif;
+    color:var(--cream);
+    line-height:1.6;
+    min-height:100vh;
+  }
+  
+  /* ─────── HEADER ─────── */
+  header{
+    border-bottom:1px solid var(--line);
+    padding:20px 0;
+    position:sticky;
+    top:0;
+    background:rgba(13,27,42,0.92);
+    backdrop-filter:blur(10px);
+    z-index:100;
+  }
+  
+  nav{
+    max-width:900px;
+    margin:0 auto;
+    padding:0 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+  
+  .logo{
+    font-size:20px;
+    font-weight:700;
+    letter-spacing:0.04em;
+    color:var(--cream);
+  }
+  
+  .logo span{color:var(--sky);}
+  
+  nav ul{
+    list-style:none;
+    display:flex;
+    gap:24px;
+  }
+  
+  nav a{
+    color:var(--gray);
+    text-decoration:none;
+    font-size:13px;
+    font-weight:500;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    transition:color 0.3s;
+  }
+  
+  nav a:hover{color:var(--sky);}
+  
+  /* ─────── HERO ─────── */
+  .hero{
+    max-width:900px;
+    margin:0 auto;
+    padding:80px 20px;
+    text-align:center;
+  }
+  
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.15em;
+    text-transform:uppercase;
+    color:var(--sky);
+    margin-bottom:16px;
+    display:inline-block;
+    padding:6px 12px;
+    border:1px solid var(--line);
+    border-radius:999px;
+  }
+  
+  h1{
+    font-size:48px;
+    font-weight:700;
+    margin:16px 0;
+    letter-spacing:-0.02em;
+    line-height:1.2;
+  }
+  
+  h1 span{color:var(--sky);}
+  
+  .tagline{
+    font-size:18px;
+    color:var(--gray);
+    margin-bottom:32px;
+    max-width:600px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  
+  .cta-group{
+    display:flex;
+    gap:16px;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+  
+  .btn{
+    padding:12px 28px;
+    border-radius:8px;
+    font-weight:600;
+    font-size:13px;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    text-decoration:none;
+    border:1px solid transparent;
+    cursor:pointer;
+    transition:all 0.3s;
+    font-family:'Space Grotesk', sans-serif;
+  }
+  
+  .btn-primary{
+    background:var(--sky);
+    color:var(--bg-dark);
+  }
+  
+  .btn-primary:hover{
+    background:var(--sky-light);
+    transform:translateY(-2px);
+  }
+  
+  .btn-secondary{
+    border:1px solid var(--sky);
+    color:var(--sky);
+    background:transparent;
+  }
+  
+  .btn-secondary:hover{
+    background:rgba(27,163,216,0.1);
+  }
+  
+  /* ─────── SECTION ─────── */
+  section{
+    max-width:900px;
+    margin:0 auto;
+    padding:60px 20px;
+    border-top:1px dashed var(--line);
+  }
+  
+  section h2{
+    font-size:32px;
+    margin-bottom:40px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+  
+  section h2::before{
+    content:"";
+    width:4px;
+    height:24px;
+    background:var(--sky);
+    border-radius:2px;
+  }
+  
+  /* ─────── PROJETS ─────── */
+  .projects-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
+    gap:24px;
+  }
+  
+  .project-card{
+    background:var(--card-bg);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:28px;
+    display:flex;
+    flex-direction:column;
+    transition:all 0.3s;
+    position:relative;
+    overflow:hidden;
+  }
+  
+  .project-card::before{
+    content:"";
+    position:absolute;
+    top:-50px;
+    right:-50px;
+    width:150px;
+    height:150px;
+    background:radial-gradient(circle, rgba(27,163,216,0.15), transparent);
+    border-radius:50%;
+    pointer-events:none;
+  }
+  
+  .project-card:hover{
+    border-color:var(--sky);
+    transform:translateY(-8px);
+  }
+  
+  .project-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:start;
+    margin-bottom:16px;
+    position:relative;
+    z-index:1;
+  }
+  
+  .project-card h3{
+    font-size:20px;
+    margin:0;
+  }
+  
+  .project-badge{
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    padding:4px 10px;
+    border-radius:999px;
+    background:rgba(27,163,216,0.15);
+    color:var(--sky);
+    font-weight:600;
+    white-space:nowrap;
+  }
+  
+  .project-badge.premier{
+    background:rgba(27,163,216,0.25);
+  }
+  
+  .project-desc{
+    color:var(--gray);
+    font-size:14px;
+    margin-bottom:20px;
+    position:relative;
+    z-index:1;
+  }
+  
+  .project-tech{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:auto;
+    position:relative;
+    z-index:1;
+  }
+  
+  .tech-tag{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    padding:4px 10px;
+    border:1px solid var(--line);
+    border-radius:4px;
+    color:var(--sky);
+    background:rgba(27,163,216,0.06);
+  }
+  
+  .voir-plus-btn{
+    text-align:center;
+    padding:40px 20px;
+  }
+  
+  .btn-voir-plus{
+    padding:14px 36px;
+    font-size:14px;
+    border:2px solid var(--sky);
+    background:transparent;
+    color:var(--sky);
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:600;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    font-family:'Space Grotesk', sans-serif;
+    transition:all 0.3s;
+  }
+  
+  .btn-voir-plus:hover{
+    background:rgba(27,163,216,0.1);
+    transform:translateY(-2px);
+  }
+  
+  .hidden-projects{
+    display:none;
+  }
+  
+  .hidden-projects.active{
+    display:grid;
+  }
+  
+  /* ─────── MODAL ─────── */
+  .modal{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background:rgba(0,0,0,0.8);
+    backdrop-filter:blur(5px);
+    z-index:1000;
+    align-items:center;
+    justify-content:center;
+  }
+  
+  .modal.active{
+    display:flex;
+  }
+  
+  .modal-content{
+    background:var(--card-bg);
+    border:1px solid var(--sky);
+    border-radius:12px;
+    padding:40px;
+    max-width:400px;
+    width:90%;
+    text-align:center;
+    animation:slideIn 0.3s;
+  }
+  
+  @keyframes slideIn{
+    from{
+      opacity:0;
+      transform:translateY(-20px);
+    }
+    to{
+      opacity:1;
+      transform:translateY(0);
+    }
+  }
+  
+  .modal h3{
+    font-size:24px;
+    margin-bottom:16px;
+    color:var(--sky);
+  }
+  
+  .modal p{
+    color:var(--gray);
+    margin-bottom:24px;
+    font-size:14px;
+  }
+  
+  .modal input{
+    width:100%;
+    padding:12px;
+    border:1px solid var(--line);
+    background:rgba(0,0,0,0.2);
+    color:var(--cream);
+    border-radius:6px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:14px;
+    letter-spacing:0.1em;
+    margin-bottom:16px;
+    text-align:center;
+  }
+  
+  .modal input::placeholder{
+    color:var(--gray-dark);
+  }
+  
+  .modal input:focus{
+    outline:none;
+    border-color:var(--sky);
+    box-shadow:0 0 0 2px rgba(27,163,216,0.2);
+  }
+  
+  .modal-buttons{
+    display:flex;
+    gap:12px;
+  }
+  
+  .modal-btn{
+    flex:1;
+    padding:12px;
+    border:none;
+    border-radius:6px;
+    font-weight:600;
+    font-size:13px;
+    text-transform:uppercase;
+    cursor:pointer;
+    font-family:'Space Grotesk', sans-serif;
+    transition:all 0.3s;
+  }
+  
+  .modal-btn.confirm{
+    background:var(--sky);
+    color:var(--bg-dark);
+  }
+  
+  .modal-btn.confirm:hover{
+    background:var(--sky-light);
+  }
+  
+  .modal-btn.cancel{
+    background:rgba(27,163,216,0.1);
+    color:var(--sky);
+  }
+  
+  .modal-btn.cancel:hover{
+    background:rgba(27,163,216,0.2);
+  }
+  
+  .error-msg{
+    color:#FF6B6B;
+    font-size:12px;
+    margin-top:-12px;
+    margin-bottom:12px;
+    display:none;
+  }
+  
+  /* ─────── À PROPOS ─────── */
+  .about-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+    gap:32px;
+  }
+  
+  .about-card{
+    background:var(--card-bg);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:28px;
+  }
+  
+  .about-card h3{
+    font-size:16px;
+    color:var(--sky);
+    margin-bottom:12px;
+    font-weight:600;
+  }
+  
+  .about-card p{
+    font-size:14px;
+    color:var(--gray);
+    line-height:1.8;
+  }
+  
+  /* ─────── CONTACT ─────── */
+  .contact-container{
+    background:linear-gradient(135deg, rgba(27,163,216,0.1), rgba(139,150,168,0.05));
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:40px;
+    text-align:center;
+  }
+  
+  .contact-container h3{
+    font-size:24px;
+    margin-bottom:24px;
+  }
+  
+  .contact-info{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    margin-bottom:32px;
+  }
+  
+  .contact-line{
+    font-family:'JetBrains Mono', monospace;
+    font-size:14px;
+  }
+  
+  .contact-line span:first-child{
+    color:var(--gray);
+    margin-right:16px;
+  }
+  
+  .contact-line span:last-child{
+    color:var(--sky);
+    font-weight:600;
+  }
+  
+  /* ─────── FOOTER ─────── */
+  footer{
+    text-align:center;
+    padding:40px 20px;
+    border-top:1px dashed var(--line);
+    color:var(--gray-dark);
+    font-size:12px;
+  }
+  
+  /* ─────── THEME TOGGLE ─────── */
+  .theme-toggle{
+    background:transparent;
+    border:1px solid var(--line);
+    color:var(--sky);
+    border-radius:999px;
+    padding:6px 14px;
+    font-size:12px;
+    cursor:pointer;
+    font-family:'JetBrains Mono', monospace;
+    transition:all 0.3s;
+    margin-left:16px;
+  }
+
+  .theme-toggle:hover{
+    background:rgba(27,163,216,0.1);
+  }
+
+  body.light-mode{
+    background:linear-gradient(180deg, #F5F1E6, #E8E2D4);
+    color:#0D1B2A;
+  }
+
+  body.light-mode header{
+    background:rgba(245,241,230,0.92);
+    border-bottom:1px solid #D8D0BC;
+  }
+
+  body.light-mode .logo{color:#0D1B2A;}
+  body.light-mode nav a{color:#5E6B7A;}
+  body.light-mode nav a:hover{color:var(--sky);}
+  body.light-mode .tagline{color:#3D4A5C;}
+  body.light-mode .eyebrow{border-color:#D8D0BC;}
+
+  body.light-mode .project-card,
+  body.light-mode .about-card,
+  body.light-mode .modal-content,
+  body.light-mode .admin-modal-content{
+    background:#FFFFFF;
+    border-color:#D8D0BC;
+  }
+
+  body.light-mode .project-desc,
+  body.light-mode .about-card p{color:#3D4A5C;}
+
+  body.light-mode section{border-top:1px dashed #D8D0BC;}
+  body.light-mode footer{border-top:1px dashed #D8D0BC; color:#8B96A8;}
+
+  body.light-mode .contact-container{
+    background:linear-gradient(135deg, rgba(27,163,216,0.08), rgba(93,74,50,0.04));
+    border-color:#D8D0BC;
+  }
+
+  body.light-mode .contact-line span:first-child{color:#5E6B7A;}
+  body.light-mode .social-btn{color:#0D1B2A; border-color:#D8D0BC;}
+  body.light-mode .admin-field label{color:#5E6B7A;}
+  body.light-mode .admin-field input,
+  body.light-mode .admin-field select{
+    background:rgba(0,0,0,0.04);
+    color:#0D1B2A;
+    border-color:#D8D0BC;
+  }
+
+  /* ─────── RÉSEAUX SOCIAUX ─────── */
+  .social-group{
+    display:flex;
+    gap:12px;
+    justify-content:center;
+    flex-wrap:wrap;
+    margin-top:24px;
+  }
+
+  .social-btn{
+    padding:10px 18px;
+    border-radius:8px;
+    font-size:13px;
+    font-weight:600;
+    text-decoration:none;
+    border:1px solid var(--line);
+    color:var(--cream);
+    background:rgba(255,255,255,0.03);
+    transition:all 0.3s;
+    display:inline-block;
+  }
+
+  .social-btn:hover{
+    border-color:var(--sky);
+    color:var(--sky);
+    transform:translateY(-2px);
+  }
+
+  /* ─────── ADMIN PANEL ─────── */
+  .admin-modal-content{
+    background:var(--card-bg);
+    border:1px solid var(--sky);
+    border-radius:12px;
+    padding:32px;
+    max-width:420px;
+    width:90%;
+    text-align:left;
+    max-height:85vh;
+    overflow-y:auto;
+    animation:slideIn 0.3s;
+  }
+
+  .admin-modal-content h3{
+    color:var(--sky);
+    margin-bottom:20px;
+    font-size:20px;
+  }
+
+  .admin-field{margin-bottom:16px;}
+
+  .admin-field label{
+    display:block;
+    font-size:11px;
+    color:var(--gray);
+    margin-bottom:6px;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+  }
+
+  .admin-field input,
+  .admin-field select{
+    width:100%;
+    padding:10px;
+    border:1px solid var(--line);
+    background:rgba(0,0,0,0.2);
+    color:var(--cream);
+    border-radius:6px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px;
+  }
+
+  .admin-field input:focus,
+  .admin-field select:focus{
+    outline:none;
+    border-color:var(--sky);
+  }
+
+  .admin-save-msg{
+    color:var(--sky);
+    font-size:12px;
+    margin-top:4px;
+    margin-bottom:12px;
+    display:none;
+  }
+
+  /* ─────── LANGUE ─────── */
+  .lang-switch{
+    background:transparent;
+    border:1px solid var(--line);
+    color:var(--sky);
+    border-radius:999px;
+    padding:6px 10px;
+    font-size:12px;
+    cursor:pointer;
+    font-family:'JetBrains Mono', monospace;
+    margin-left:12px;
+  }
+
+  body.light-mode .lang-switch{border-color:#D8D0BC; color:var(--sky);}
+
+  /* ─────── COPY BUTTON ─────── */
+  .copy-line{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:6px;
+  }
+
+  .copy-value{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    flex-wrap:wrap;
+  }
+
+  .copy-btn{
+    background:rgba(27,163,216,0.12);
+    border:1px solid var(--sky);
+    color:var(--sky);
+    border-radius:6px;
+    padding:4px 12px;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    cursor:pointer;
+    font-family:'Space Grotesk', sans-serif;
+    transition:all 0.3s;
+  }
+
+  .copy-btn:hover{background:rgba(27,163,216,0.22);}
+  .copy-btn.copied{background:var(--sky); color:var(--bg-dark);}
+
+  /* ─────── APP LINKS ─────── */
+  .app-links{
+    margin-top:24px;
+    padding-top:20px;
+    border-top:1px dashed var(--line);
+  }
+
+  .app-links-note{
+    color:var(--gray);
+    font-size:12px;
+    margin-bottom:14px;
+  }
+
+  .app-links-row{
+    display:flex;
+    gap:10px;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+
+  body.light-mode .app-links{border-color:#D8D0BC;}
+
+  /* ─────── RESPONSIVE ─────── */
+  @media(max-width:640px){
+    h1{font-size:32px;}
+    .tagline{font-size:16px;}
+    nav ul{gap:12px;}
+    nav a{font-size:11px;}
+    section{padding:40px 20px;}
+    section h2{font-size:24px;}
+    .projects-grid{grid-template-columns:1fr;}
+    .modal-content{padding:32px 24px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo" id="logoEl" onclick="handleLogoClick()">Wiler<span>_Tech</span></div>
+    <div style="display:flex; align-items:center;">
+      <ul>
+        <li><a href="#projets" data-i18n="nav_projets">Projets</a></li>
+        <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
+      </ul>
+      <select class="lang-switch" id="langSwitch" onchange="setLanguage(this.value)">
+        <option value="fr">🇫🇷 FR</option>
+        <option value="en">🇬🇧 EN</option>
+        <option value="es">🇪🇸 ES</option>
+        <option value="pt">🇵🇹 PT</option>
+      </select>
+      <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">☀️ Jou</button>
+    </div>
+  </nav>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="eyebrow" data-i18n="hero_eyebrow">Développeur Indépendant</div>
+  <h1>Wiler <span>_Tech</span></h1>
+  <p class="tagline" data-i18n="hero_tagline">Web · Android · Applications Desktop — Applications réelles livrées à des clients en Haïti et à l'international</p>
+  <div class="cta-group">
+    <a href="#projets" class="btn btn-primary" data-i18n="hero_btn_projects">Voir mes projets</a>
+    <a href="#contact" class="btn btn-secondary" data-i18n="hero_btn_contact">Entrer en contact</a>
+  </div>
+  <div class="social-group" id="socialGroup">
+    <a href="#" id="btnWhatsapp" class="social-btn" target="_blank" rel="noopener">💬 WhatsApp</a>
+    <a href="#" id="btnWhatsappGroup" class="social-btn" target="_blank" rel="noopener">👥 Groupe WhatsApp</a>
+    <a href="#" id="btnYoutube" class="social-btn" target="_blank" rel="noopener">▶️ YouTube</a>
+    <a href="#" id="btnTiktok" class="social-btn" target="_blank" rel="noopener">🎵 TikTok</a>
+  </div>
+</div>
+
+<!-- À PROPOS -->
+<section id="about">
+  <h2 data-i18n="about_title">À propos</h2>
+  <div class="about-grid">
+    <div class="about-card">
+      <h3 data-i18n="about_card1_title">Qui je suis</h3>
+      <p data-i18n="about_card1_text">Développeur autodidacte de 21 ans basé à Port-de-Paix, Haïti. Je construis des applications web, mobiles et desktop depuis 0 — du design à la livraison. J'aime résoudre des problèmes réels avec du code propre et efficace.</p>
+    </div>
+    <div class="about-card">
+      <h3 data-i18n="about_card2_title">Approche</h3>
+      <p data-i18n="about_card2_text">Je privilégie les applications légères, autonomes et performantes. Chaque projet que je développe est pensé pour l'utilisateur final. Je maîtrise Firebase, JavaScript pur, et les architectures sans dépendances inutiles.</p>
+    </div>
+    <div class="about-card">
+      <h3 data-i18n="about_card3_title">Clients</h3>
+      <p data-i18n="about_card3_text">J'ai livré des solutions à des institutions financières (Société Financière de Crédit Lapointe), à des startups, et à des entrepreneurs individuels. Chaque projet est une relation de confiance bâtie sur la qualité.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROJETS -->
+<section id="projets">
+  <h2 data-i18n="projects_title">Projets</h2>
+  <div class="projects-grid" id="visibleProjects">
+    
+    <!-- WIL STORE -->
+    <div class="project-card">
+      <div class="project-header">
+        <h3>Wil Store</h3>
+        <span class="project-badge premier">★ Premier & Plus Grand</span>
+      </div>
+      <p class="project-desc">Plateforme e-commerce complète en Haitian Creole. Gestion de marchands, produits, images compressées, panier, commandes avec notifications en temps réel. Architecture Firebase scalable.</p>
+      <div class="project-tech">
+        <span class="tech-tag">HTML/CSS/JS</span>
+        <span class="tech-tag">Firebase</span>
+        <span class="tech-tag">E-commerce</span>
+        <span class="tech-tag">Créole</span>
+      </div>
+    </div>
+    
+    <!-- AYIPAY -->
+    <div class="project-card">
+      <div class="project-header">
+        <h3>AyiPay</h3>
+        <span class="project-badge">En ligne</span>
+      </div>
+      <p class="project-desc">Plateforme de paiement numérique haïtienne. Rôles client/marchand/admin, validation de cartes, historique de transactions, résumés hebdomadaires, notification en temps réel. Déployée Android et web.</p>
+      <div class="project-tech">
+        <span class="tech-tag">Android/Kotlin</span>
+        <span class="tech-tag">Firebase</span>
+        <span class="tech-tag">Paiements</span>
+        <span class="tech-tag">APK</span>
+      </div>
+    </div>
+    
+    <!-- WING -->
+    <div class="project-card">
+      <div class="project-header">
+        <h3>Wing</h3>
+        <span class="project-badge">Beta</span>
+      </div>
+      <p class="project-desc">Marché d'APK billingue (Créole/Français) avec téléchargements, système de paiement intégré AyiPay, verrouillage des méthodes par utilisateur, compression vidéo côté client, mode sombre.</p>
+      <div class="project-tech">
+        <span class="tech-tag">Web</span>
+        <span class="tech-tag">Firebase</span>
+        <span class="tech-tag">Dark Mode</span>
+        <span class="tech-tag">Multilingue</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- HIDDEN PROJECTS -->
+  <div class="projects-grid hidden-projects" id="hiddenProjects">
+    
+    <!-- SOFICLA -->
+    <div class="project-card">
+      <div class="project-header">
+        <h3>SOFICLA</h3>
+        <span class="project-badge">Livrée</span>
+      </div>
+      <p class="project-desc">Application microfinance desktop pour Société Financière de Crédit Lapointe. Gestion de comptes, taux d'intérêt automatisés, backups AES-256, deux rôles (Admin/Caissier), signatures numériques. Exécutable Windows.</p>
+      <div class="project-tech">
+        <span class="tech-tag">Electron</span>
+        <span class="tech-tag">Windows .exe</span>
+        <span class="tech-tag">localStorage</span>
+        <span class="tech-tag">Chiffrement</span>
+      </div>
+    </div>
+
+    <!-- VWALO -->
+    <div class="project-card">
+      <div class="project-header">
+        <h3>Vwalo</h3>
+        <span class="project-badge">Archive</span>
+      </div>
+      <p class="project-desc">Application familiale en Créole pour messaging et appels. Chat en temps réel, WebRTC voice calls, read receipts, PWA installable, optimisation Firebase. Fondations posées pour projets futurs.</p>
+      <div class="project-tech">
+        <span class="tech-tag">PWA</span>
+        <span class="tech-tag">WebRTC</span>
+        <span class="tech-tag">Firebase RT DB</span>
+        <span class="tech-tag">Créole</span>
+      </div>
+    </div>
+
+    <!-- MUTEB -->
+    <div class="project-card">
+      <div class="project-header">
+        <h3>MUTEB</h3>
+        <span class="project-badge">Livrée</span>
+      </div>
+      <p class="project-desc">Système de gestion des économies pour école. Gestion de carnets, calcul de parts, export PDF/Excel, historique des transactions, email avec justificatifs, layout responsive.</p>
+      <div class="project-tech">
+        <span class="tech-tag">PDF/Excel</span>
+        <span class="tech-tag">Gestion</span>
+        <span class="tech-tag">Responsive</span>
+        <span class="tech-tag">Email</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- VOIR PLUS BUTTON -->
+  <div class="voir-plus-btn">
+    <button class="btn-voir-plus" onclick="openCodeModal()">Voir plus de projets</button>
+  </div>
+</section>
+
+<!-- MODAL CODE -->
+<div class="modal" id="codeModal">
+  <div class="modal-content">
+    <h3>Accès restreint</h3>
+    <p>Entrez le code d'accès pour voir les autres projets</p>
+    <div class="error-msg" id="errorMsg">Code incorrect. Veuillez réessayer.</div>
+    <input type="password" id="codeInput" placeholder="Code à 6 caractères" maxlength="6">
+    <div class="modal-buttons">
+      <button class="modal-btn confirm" onclick="verifyCode()">Confirmer</button>
+      <button class="modal-btn cancel" onclick="closeCodeModal()">Annuler</button>
+    </div>
+  </div>
+</div>
+
+<!-- DON / SIPÒ -->
+<section id="don">
+  <h2 data-i18n="support_title">Sipòte mwen</h2>
+  <div class="contact-container">
+    <h3 data-i18n="support_subtitle">Fè yon don</h3>
+    <div class="contact-info">
+      <div class="contact-line copy-line">
+        <span data-i18n="support_natcash_label">NatCash</span>
+        <span class="copy-value">
+          <span id="natcashNumber">+509 43807545</span>
+          <button class="copy-btn" onclick="copyNumber('natcashNumber', this)" data-i18n="support_copy_label">Kopye</button>
+        </span>
+      </div>
+      <div class="contact-line copy-line" id="moncashLine" style="display:none;">
+        <span data-i18n="support_moncash_label">MonCash</span>
+        <span class="copy-value">
+          <span id="moncashNumber">+509 43807545</span>
+          <button class="copy-btn" onclick="copyNumber('moncashNumber', this)" data-i18n="support_copy_label">Kopye</button>
+        </span>
+      </div>
+    </div>
+    <p style="color:var(--gray); font-size:13px;" data-i18n="support_text">Si travay mwen ede w, ou ka montre m sa lè w voye yon ti kontribisyon sou NatCash oswa MonCash nan nimewo ki anwo a. Mèsi anpil pou sipò w! 🙏</p>
+
+    <div class="app-links" id="appLinks">
+      <p class="app-links-note" data-i18n="support_app_note">Ou gen sèlman yon kat kredi/MasterCard? Ou ka voye kòb dirèkteman sou nimewo ki anwo a lè w sèvi ak youn nan app sa yo — kopye nimewo a anvan, louvri app la, epi kole l kòm destinatè.</p>
+      <div class="app-links-row">
+        <a href="https://www.xoom.com/haiti" target="_blank" rel="noopener" class="social-btn">Xoom</a>
+        <a href="https://www.sendwave.com/en-us/countries/haiti" target="_blank" rel="noopener" class="social-btn">Sendwave</a>
+        <a href="https://www.remitly.com/us/en/providers-haiti/send-money-to-moncash" target="_blank" rel="noopener" class="social-btn">Remitly</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <h2 data-i18n="contact_title">Entrer en contact</h2>
+  <div class="contact-container">
+    <h3 data-i18n="contact_subtitle">Prêt à collaborer ?</h3>
+    <div class="contact-info">
+      <div class="contact-line">
+        <span data-i18n="contact_phone_label">Téléphone</span>
+        <span>+509 43807545 / +509 40097947 / +509 36253817</span>
+      </div>
+      <div class="contact-line">
+        <span data-i18n="contact_location_label">Localisation</span>
+        <span>Port-de-Paix, Haïti</span>
+      </div>
+      <div class="contact-line">
+        <span data-i18n="contact_specialty_label">Spécialité</span>
+        <span>Applications autonomes, Firebase, solutions custom</span>
+      </div>
+    </div>
+    <p style="color:var(--gray); font-size:13px;" data-i18n="contact_text">Je suis disponible pour des projets court/long terme, du consulting technique, ou des collaborations avec d'autres développeurs.</p>
+  </div>
+</section>
+
+<footer>
+  <p data-i18n="footer_text">Wiler_Tech © 2026 · Développeur autodidacte · Port-de-Paix, Haiti 🇭🇹</p>
+</footer>
+
+<!-- MODAL CEO (KOD SEKRÈ) -->
+<div class="modal" id="ceoModal">
+  <div class="modal-content">
+    <h3>CEO</h3>
+    <p>Antre kòd la</p>
+    <div class="error-msg" id="ceoErrorMsg">Kòd pa bon. Eseye ankò.</div>
+    <input type="password" id="ceoCodeInput" placeholder="Kòd" maxlength="6">
+    <div class="modal-buttons">
+      <button class="modal-btn confirm" onclick="verifyCeoCode()">Konfime</button>
+      <button class="modal-btn cancel" onclick="closeCeoModal()">Anile</button>
+    </div>
+  </div>
+</div>
+
+<!-- PANEL ADMIN SEKRÈ -->
+<div class="modal" id="adminPanel">
+  <div class="admin-modal-content">
+    <h3>Panel Admin</h3>
+    <div class="admin-field">
+      <label>Nimewo WhatsApp (bouton)</label>
+      <select id="adminWhatsappSelect">
+        <option value="+50940097947">+509 40097947</option>
+        <option value="+50943807545">+509 43807545</option>
+        <option value="+50936253817">+509 36253817</option>
+      </select>
+    </div>
+    <div class="admin-field">
+      <label>Lyen Gwoup WhatsApp</label>
+      <input type="text" id="adminWhatsappGroup" placeholder="https://chat.whatsapp.com/...">
+    </div>
+    <div class="admin-field">
+      <label>Lyen YouTube</label>
+      <input type="text" id="adminYoutube" placeholder="https://youtube.com/@...">
+    </div>
+    <div class="admin-field">
+      <label>Lyen TikTok</label>
+      <input type="text" id="adminTiktok" placeholder="https://tiktok.com/@...">
+    </div>
+    <div class="admin-field">
+      <label>Nimewo NatCash (Don)</label>
+      <input type="text" id="adminNatcash" placeholder="+509...">
+    </div>
+    <div class="admin-field">
+      <label>Nimewo MonCash (Don)</label>
+      <input type="text" id="adminMoncash" placeholder="+509... (kite vid pou kache l)">
+    </div>
+    <div class="admin-save-msg" id="adminSaveMsg">Anrejistre! ✓</div>
+    <div class="modal-buttons">
+      <button class="modal-btn confirm" onclick="saveAdminSettings()">Anrejistre</button>
+      <button class="modal-btn cancel" onclick="closeAdminPanel()">Fèmen</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const ACCESS_CODE = '1a2b3c';
+  
+  function openCodeModal(){
+    document.getElementById('codeModal').classList.add('active');
+    document.getElementById('codeInput').focus();
+    document.getElementById('errorMsg').style.display = 'none';
+  }
+  
+  function closeCodeModal(){
+    document.getElementById('codeModal').classList.remove('active');
+    document.getElementById('codeInput').value = '';
+    document.getElementById('errorMsg').style.display = 'none';
+  }
+  
+  function verifyCode(){
+    const code = document.getElementById('codeInput').value;
+    if(code === ACCESS_CODE){
+      document.getElementById('hiddenProjects').classList.add('active');
+      closeCodeModal();
+      document.querySelector('.voir-plus-btn').style.display = 'none';
+    } else {
+      document.getElementById('errorMsg').style.display = 'block';
+      document.getElementById('codeInput').value = '';
+      document.getElementById('codeInput').focus();
+    }
+  }
+  
+  document.getElementById('codeInput').addEventListener('keypress', function(e){
+    if(e.key === 'Enter'){
+      verifyCode();
+    }
+  });
+  
+  document.getElementById('codeModal').addEventListener('click', function(e){
+    if(e.target === this){
+      closeCodeModal();
+    }
+  });
+
+  /* ═══════════ PANEL CEO SEKRÈ + RÉSEAUX SOSYAL + DON ═══════════ */
+  const CEO_CODE = '000999';
+  const DEFAULT_SETTINGS = {
+    whatsapp: '+50940097947',
+    whatsappGroup: '',
+    youtube: '',
+    tiktok: '',
+    natcash: '+50943807545',
+    moncash: ''
+  };
+
+  let logoClickCount = 0;
+  let logoClickTimer = null;
+
+  function handleLogoClick(){
+    logoClickCount++;
+    if(logoClickTimer) clearTimeout(logoClickTimer);
+    logoClickTimer = setTimeout(function(){ logoClickCount = 0; }, 1500);
+    if(logoClickCount >= 5){
+      logoClickCount = 0;
+      clearTimeout(logoClickTimer);
+      openCeoModal();
+    }
+  }
+
+  function openCeoModal(){
+    document.getElementById('ceoModal').classList.add('active');
+    document.getElementById('ceoCodeInput').focus();
+    document.getElementById('ceoErrorMsg').style.display = 'none';
+  }
+
+  function closeCeoModal(){
+    document.getElementById('ceoModal').classList.remove('active');
+    document.getElementById('ceoCodeInput').value = '';
+    document.getElementById('ceoErrorMsg').style.display = 'none';
+  }
+
+  function verifyCeoCode(){
+    const code = document.getElementById('ceoCodeInput').value;
+    if(code === CEO_CODE){
+      closeCeoModal();
+      openAdminPanel();
+    } else {
+      document.getElementById('ceoErrorMsg').style.display = 'block';
+      document.getElementById('ceoCodeInput').value = '';
+      document.getElementById('ceoCodeInput').focus();
+    }
+  }
+
+  document.getElementById('ceoCodeInput').addEventListener('keypress', function(e){
+    if(e.key === 'Enter'){
+      verifyCeoCode();
+    }
+  });
+
+  document.getElementById('ceoModal').addEventListener('click', function(e){
+    if(e.target === this){
+      closeCeoModal();
+    }
+  });
+
+  function getSettings(){
+    const saved = localStorage.getItem('wilerTechSettings');
+    if(saved){
+      try{
+        return Object.assign({}, DEFAULT_SETTINGS, JSON.parse(saved));
+      } catch(e){
+        return Object.assign({}, DEFAULT_SETTINGS);
+      }
+    }
+    return Object.assign({}, DEFAULT_SETTINGS);
+  }
+
+  function applySettings(){
+    const s = getSettings();
+    const waDigits = s.whatsapp.replace(/[^0-9]/g,'');
+    document.getElementById('btnWhatsapp').href = 'https://wa.me/' + waDigits;
+    document.getElementById('btnWhatsappGroup').href = s.whatsappGroup || '#';
+    document.getElementById('btnYoutube').href = s.youtube || '#';
+    document.getElementById('btnTiktok').href = s.tiktok || '#';
+    document.getElementById('natcashNumber').textContent = s.natcash;
+    document.getElementById('moncashNumber').textContent = s.moncash || s.natcash;
+    document.getElementById('moncashLine').style.display = s.moncash ? 'flex' : 'none';
+
+    document.getElementById('btnWhatsappGroup').style.display = s.whatsappGroup ? 'inline-block' : 'none';
+    document.getElementById('btnYoutube').style.display = s.youtube ? 'inline-block' : 'none';
+    document.getElementById('btnTiktok').style.display = s.tiktok ? 'inline-block' : 'none';
+  }
+
+  function openAdminPanel(){
+    const s = getSettings();
+    document.getElementById('adminWhatsappSelect').value = s.whatsapp;
+    document.getElementById('adminWhatsappGroup').value = s.whatsappGroup;
+    document.getElementById('adminYoutube').value = s.youtube;
+    document.getElementById('adminTiktok').value = s.tiktok;
+    document.getElementById('adminNatcash').value = s.natcash;
+    document.getElementById('adminMoncash').value = s.moncash;
+    document.getElementById('adminSaveMsg').style.display = 'none';
+    document.getElementById('adminPanel').classList.add('active');
+  }
+
+  function closeAdminPanel(){
+    document.getElementById('adminPanel').classList.remove('active');
+  }
+
+  function saveAdminSettings(){
+    const s = {
+      whatsapp: document.getElementById('adminWhatsappSelect').value,
+      whatsappGroup: document.getElementById('adminWhatsappGroup').value.trim(),
+      youtube: document.getElementById('adminYoutube').value.trim(),
+      tiktok: document.getElementById('adminTiktok').value.trim(),
+      natcash: document.getElementById('adminNatcash').value.trim() || DEFAULT_SETTINGS.natcash,
+      moncash: document.getElementById('adminMoncash').value.trim()
+    };
+    localStorage.setItem('wilerTechSettings', JSON.stringify(s));
+    applySettings();
+    document.getElementById('adminSaveMsg').style.display = 'block';
+  }
+
+  document.getElementById('adminPanel').addEventListener('click', function(e){
+    if(e.target === this){
+      closeAdminPanel();
+    }
+  });
+
+  applySettings();
+
+  /* ═══════════ MODE JOU / NWIT ═══════════ */
+  function applyTheme(){
+    const theme = localStorage.getItem('wilerTechTheme') || 'dark';
+    if(theme === 'light'){
+      document.body.classList.add('light-mode');
+      document.getElementById('themeToggle').textContent = '🌙 Nwit';
+    } else {
+      document.body.classList.remove('light-mode');
+      document.getElementById('themeToggle').textContent = '☀️ Jou';
+    }
+  }
+
+  function toggleTheme(){
+    const isLight = document.body.classList.contains('light-mode');
+    localStorage.setItem('wilerTechTheme', isLight ? 'dark' : 'light');
+    applyTheme();
+  }
+
+  applyTheme();
+
+  /* ═══════════ KOPYE NIMEWO ═══════════ */
+  function copyNumber(elId, btn){
+    const text = document.getElementById(elId).textContent;
+    const done = function(){
+      const original = btn.textContent;
+      btn.textContent = '✓';
+      btn.classList.add('copied');
+      setTimeout(function(){
+        btn.textContent = original;
+        btn.classList.remove('copied');
+      }, 1500);
+    };
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(done).catch(function(){ fallbackCopy(text, done); });
+    } else {
+      fallbackCopy(text, done);
+    }
+  }
+
+  function fallbackCopy(text, done){
+    const temp = document.createElement('textarea');
+    temp.value = text;
+    temp.style.position = 'fixed';
+    temp.style.opacity = '0';
+    document.body.appendChild(temp);
+    temp.focus();
+    temp.select();
+    try{ document.execCommand('copy'); } catch(e){}
+    document.body.removeChild(temp);
+    done();
+  }
+
+  /* ═══════════ TRADIKSYON MILTI-LANG ═══════════ */
+  const TRANSLATIONS = {
+    fr: {
+      nav_projets:'Projets', nav_contact:'Contact',
+      hero_eyebrow:'Développeur Indépendant',
+      hero_tagline:"Web · Android · Applications Desktop — Applications réelles livrées à des clients en Haïti et à l'international",
+      hero_btn_projects:'Voir mes projets', hero_btn_contact:'Entrer en contact',
+      about_title:'À propos',
+      about_card1_title:'Qui je suis',
+      about_card1_text:"Développeur autodidacte de 21 ans basé à Port-de-Paix, Haïti. Je construis des applications web, mobiles et desktop depuis 0 — du design à la livraison. J'aime résoudre des problèmes réels avec du code propre et efficace.",
+      about_card2_title:'Approche',
+      about_card2_text:"Je privilégie les applications légères, autonomes et performantes. Chaque projet que je développe est pensé pour l'utilisateur final. Je maîtrise Firebase, JavaScript pur, et les architectures sans dépendances inutiles.",
+      about_card3_title:'Clients',
+      about_card3_text:"J'ai livré des solutions à des institutions financières (Société Financière de Crédit Lapointe), à des startups, et à des entrepreneurs individuels. Chaque projet est une relation de confiance bâtie sur la qualité.",
+      projects_title:'Projets',
+      btn_voir_plus:'Voir plus de projets',
+      support_title:'Soutenez-moi', support_subtitle:'Faire un don',
+      support_natcash_label:'NatCash', support_moncash_label:'MonCash', support_copy_label:'Copier',
+      support_text:"Si mon travail vous aide, vous pouvez le montrer en envoyant une petite contribution sur NatCash ou MonCash au numéro ci-dessus. Merci beaucoup pour votre soutien ! 🙏",
+      support_app_note:"Vous n'avez qu'une carte bancaire/MasterCard ? Vous pouvez envoyer de l'argent directement au numéro ci-dessus via l'une de ces applications — copiez le numéro, ouvrez l'application, puis collez-le comme destinataire.",
+      contact_title:'Entrer en contact', contact_subtitle:'Prêt à collaborer ?',
+      contact_phone_label:'Téléphone', contact_location_label:'Localisation', contact_specialty_label:'Spécialité',
+      contact_text:"Je suis disponible pour des projets court/long terme, du consulting technique, ou des collaborations avec d'autres développeurs.",
+      footer_text:'Wiler_Tech © 2026 · Développeur autodidacte · Port-de-Paix, Haiti 🇭🇹'
+    },
+    en: {
+      nav_projets:'Projects', nav_contact:'Contact',
+      hero_eyebrow:'Independent Developer',
+      hero_tagline:'Web · Android · Desktop Applications — Real applications delivered to clients in Haiti and internationally',
+      hero_btn_projects:'View my projects', hero_btn_contact:'Get in touch',
+      about_title:'About',
+      about_card1_title:'Who I am',
+      about_card1_text:"Self-taught 21-year-old developer based in Port-de-Paix, Haiti. I build web, mobile, and desktop applications from scratch — from design to delivery. I love solving real problems with clean, efficient code.",
+      about_card2_title:'Approach',
+      about_card2_text:"I favor lightweight, self-contained, high-performance applications. Every project I build is designed with the end user in mind. I master Firebase, pure JavaScript, and dependency-free architectures.",
+      about_card3_title:'Clients',
+      about_card3_text:"I've delivered solutions to financial institutions (Société Financière de Crédit Lapointe), startups, and individual entrepreneurs. Every project is a trust relationship built on quality.",
+      projects_title:'Projects',
+      btn_voir_plus:'See more projects',
+      support_title:'Support Me', support_subtitle:'Make a donation',
+      support_natcash_label:'NatCash', support_moncash_label:'MonCash', support_copy_label:'Copy',
+      support_text:"If my work has helped you, you can show it by sending a small contribution to NatCash or MonCash at the number above. Thank you so much for your support! 🙏",
+      support_app_note:"Only have a credit card/MasterCard? You can send money directly to the number above using one of these apps — copy the number first, open the app, then paste it as the recipient.",
+      contact_title:'Get in Touch', contact_subtitle:'Ready to collaborate?',
+      contact_phone_label:'Phone', contact_location_label:'Location', contact_specialty_label:'Specialty',
+      contact_text:"I'm available for short/long-term projects, technical consulting, or collaborations with other developers.",
+      footer_text:'Wiler_Tech © 2026 · Self-taught developer · Port-de-Paix, Haiti 🇭🇹'
+    },
+    es: {
+      nav_projets:'Proyectos', nav_contact:'Contacto',
+      hero_eyebrow:'Desarrollador Independiente',
+      hero_tagline:'Web · Android · Aplicaciones de Escritorio — Aplicaciones reales entregadas a clientes en Haití y a nivel internacional',
+      hero_btn_projects:'Ver mis proyectos', hero_btn_contact:'Ponerse en contacto',
+      about_title:'Acerca de',
+      about_card1_title:'Quién soy',
+      about_card1_text:"Desarrollador autodidacta de 21 años, con base en Port-de-Paix, Haití. Construyo aplicaciones web, móviles y de escritorio desde cero — desde el diseño hasta la entrega. Me encanta resolver problemas reales con código limpio y eficiente.",
+      about_card2_title:'Enfoque',
+      about_card2_text:"Prefiero aplicaciones ligeras, autónomas y de alto rendimiento. Cada proyecto que desarrollo está pensado para el usuario final. Domino Firebase, JavaScript puro y arquitecturas sin dependencias innecesarias.",
+      about_card3_title:'Clientes',
+      about_card3_text:"He entregado soluciones a instituciones financieras (Société Financière de Crédit Lapointe), startups y emprendedores individuales. Cada proyecto es una relación de confianza construida sobre la calidad.",
+      projects_title:'Proyectos',
+      btn_voir_plus:'Ver más proyectos',
+      support_title:'Apóyame', support_subtitle:'Hacer una donación',
+      support_natcash_label:'NatCash', support_moncash_label:'MonCash', support_copy_label:'Copiar',
+      support_text:"Si mi trabajo te ha ayudado, puedes demostrarlo enviando una pequeña contribución a NatCash o MonCash al número de arriba. ¡Muchas gracias por tu apoyo! 🙏",
+      support_app_note:"¿Solo tienes una tarjeta de crédito/MasterCard? Puedes enviar dinero directamente al número de arriba usando una de estas aplicaciones — copia el número, abre la aplicación y pégalo como destinatario.",
+      contact_title:'Ponerse en Contacto', contact_subtitle:'¿Listo para colaborar?',
+      contact_phone_label:'Teléfono', contact_location_label:'Ubicación', contact_specialty_label:'Especialidad',
+      contact_text:"Estoy disponible para proyectos a corto/largo plazo, consultoría técnica o colaboraciones con otros desarrolladores.",
+      footer_text:'Wiler_Tech © 2026 · Desarrollador autodidacta · Port-de-Paix, Haití 🇭🇹'
+    },
+    pt: {
+      nav_projets:'Projetos', nav_contact:'Contato',
+      hero_eyebrow:'Desenvolvedor Independente',
+      hero_tagline:'Web · Android · Aplicações Desktop — Aplicações reais entregues a clientes no Haiti e internacionalmente',
+      hero_btn_projects:'Ver meus projetos', hero_btn_contact:'Entrar em contato',
+      about_title:'Sobre mim',
+      about_card1_title:'Quem sou eu',
+      about_card1_text:"Desenvolvedor autodidata de 21 anos, baseado em Port-de-Paix, Haiti. Construo aplicações web, móveis e desktop do zero — do design à entrega. Adoro resolver problemas reais com código limpo e eficiente.",
+      about_card2_title:'Abordagem',
+      about_card2_text:"Prefiro aplicações leves, autônomas e de alto desempenho. Cada projeto que desenvolvo é pensado para o usuário final. Domino Firebase, JavaScript puro e arquiteturas sem dependências desnecessárias.",
+      about_card3_title:'Clientes',
+      about_card3_text:"Entreguei soluções para instituições financeiras (Société Financière de Crédit Lapointe), startups e empreendedores individuais. Cada projeto é uma relação de confiança construída sobre qualidade.",
+      projects_title:'Projetos',
+      btn_voir_plus:'Ver mais projetos',
+      support_title:'Apoie-me', support_subtitle:'Fazer uma doação',
+      support_natcash_label:'NatCash', support_moncash_label:'MonCash', support_copy_label:'Copiar',
+      support_text:"Se o meu trabalho te ajudou, você pode demonstrar isso enviando uma pequena contribuição para NatCash ou MonCash no número acima. Muito obrigado pelo seu apoio! 🙏",
+      support_app_note:"Só tem cartão de crédito/MasterCard? Você pode enviar dinheiro diretamente para o número acima usando um destes aplicativos — copie o número, abra o aplicativo e cole-o como destinatário.",
+      contact_title:'Entrar em Contato', contact_subtitle:'Pronto para colaborar?',
+      contact_phone_label:'Telefone', contact_location_label:'Localização', contact_specialty_label:'Especialidade',
+      contact_text:"Estou disponível para projetos de curto/longo prazo, consultoria técnica ou colaborações com outros desenvolvedores.",
+      footer_text:'Wiler_Tech © 2026 · Desenvolvedor autodidata · Port-de-Paix, Haiti 🇭🇹'
+    }
+  };
+
+  const COUNTRY_LANG_MAP = {
+    US:'en', GB:'en', CA:'en', AU:'en', NZ:'en', IE:'en', ZA:'en', IN:'en', PH:'en', JM:'en', TT:'en', BS:'en', BB:'en', NG:'en',
+    MX:'es', ES:'es', AR:'es', CO:'es', PE:'es', CL:'es', VE:'es', EC:'es', GT:'es', CU:'es', BO:'es', DO:'es', HN:'es', PY:'es', SV:'es', NI:'es', CR:'es', PA:'es', UY:'es', GQ:'es',
+    PT:'pt', BR:'pt', AO:'pt', MZ:'pt', CV:'pt', GW:'pt', ST:'pt', TL:'pt',
+    FR:'fr', BE:'fr', CH:'fr', LU:'fr', MC:'fr', HT:'fr'
+  };
+
+  function applyLanguage(lang){
+    if(!TRANSLATIONS[lang]) lang = 'fr';
+    const dict = TRANSLATIONS[lang];
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+      const key = el.getAttribute('data-i18n');
+      if(dict[key]) el.textContent = dict[key];
+    });
+    document.getElementById('langSwitch').value = lang;
+    document.documentElement.setAttribute('lang', lang);
+    localStorage.setItem('wilerTechLang', lang);
+  }
+
+  function setLanguage(lang){
+    applyLanguage(lang);
+  }
+
+  function detectAndApplyLanguage(){
+    const saved = localStorage.getItem('wilerTechLang');
+    if(saved){
+      applyLanguage(saved);
+      return;
+    }
+    fetch('https://get.geojs.io/v1/ip/country.json')
+      .then(function(r){ return r.json(); })
+      .then(function(data){
+        const country = data && data.country;
+        const lang = COUNTRY_LANG_MAP[country] || 'fr';
+        applyLanguage(lang);
+      })
+      .catch(function(){
+        applyLanguage('fr');
+      });
+  }
+
+  detectAndApplyLanguage();
+</script>
+
+</body>
+</html>
